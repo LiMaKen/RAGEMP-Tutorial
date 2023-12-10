@@ -1,11 +1,11 @@
-let loginWindow = mp.browsers.new("package://web/login/login.html");
+﻿let loginWindow = mp.browsers.new("package://web/login/login.html");
 
 setTimeout(() => {
     mp.gui.cursor.show(true, true);
     mp.game.ui.displayHud(false);
     mp.gui.chat.show(false);
     mp.game.ui.displayRadar(false);
-    mp.discord.update('Ch?i tr�n vnrgames.com', 'Wir spielen Roleplay!');
+    mp.discord.update('Chơi trên vnrgames.com', 'Wir spielen Roleplay!');
 }, 150)
 
 mp.events.add("Auth.Register", (password) => 
