@@ -1,9 +1,9 @@
 <template>
 <div class="inventory" v-if="showInventar">
-    <InventoryList title="Inventar" :arrayitems="inventoryItems" style="max-height: 715px;overflow-y: scroll">
+    <InventoryList title="Kho Đồ" :arrayitems="inventoryItems" style="max-height: 715px;overflow-y: scroll">
         <Container group-name="1" :get-child-payload="getChildPayload" @drop="onDrop('inventoryItems', $event)">
             <Draggable v-for="item in inventoryItems" :key="item.id">
-                <InventoryItem :item="item" class="mt-2" title="Inventar" :arrayitems="inventoryItems">
+                <InventoryItem :item="item" class="mt-2" title="Kho Đồ" :arrayitems="inventoryItems">
                 </InventoryItem>
             </Draggable>
         </Container>

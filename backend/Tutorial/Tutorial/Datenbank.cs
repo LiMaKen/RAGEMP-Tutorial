@@ -221,7 +221,7 @@ namespace Tutorial
             foreach(HausModel hausModel in db.Fetch<HausModel>("SELECT * FROM house"))
             {
                 hausModel.position = new Vector3(hausModel.posx, hausModel.posy, hausModel.posz);
-                hausModel.hausLabel = NAPI.TextLabel.CreateTextLabel($"Dieses Haus steht für {hausModel.preis}$ zum Verkauf, benutze /buyhouse um es zu kaufen", new Vector3(hausModel.position.X, hausModel.position.Y, hausModel.position.Z + 0.8), 5.0f, 0.75f, 4, new Color(255, 255, 255));
+                hausModel.hausLabel = NAPI.TextLabel.CreateTextLabel($"Ngôi nhà này được bán với giá {hausModel.preis}$, sử dụng /buyhouse để mua nhà", new Vector3(hausModel.position.X, hausModel.position.Y, hausModel.position.Z + 0.8), 5.0f, 0.75f, 4, new Color(255, 255, 255));
                 if (hausModel.status == false)
                 {
                     hausModel.hausMarker = NAPI.Marker.CreateMarker(1, new Vector3(hausModel.position.X, hausModel.position.Y, hausModel.position.Z - 1.1), hausModel.position, new Vector3(), 1.0f, new Color(38, 230, 0), false);

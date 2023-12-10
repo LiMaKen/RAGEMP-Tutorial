@@ -5,7 +5,7 @@ setTimeout(() => {
     mp.game.ui.displayHud(false);
     mp.gui.chat.show(false);
     mp.game.ui.displayRadar(false);
-    mp.discord.update('Chơi trên vnrgames.com', 'Wir spielen Roleplay!');
+    mp.discord.update('Chơi trên vnrgames.com', 'Cùng chơi Roleplay!');
 }, 150)
 
 mp.events.add("Auth.Register", (password) => 

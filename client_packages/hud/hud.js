@@ -7,6 +7,11 @@ mp.gui.chat.show(false); //Disables default RageMP Chat
 const chat = mp.browsers.new('package://advanced-chat/index.html');
 chat.markAsChat();
 
+
+mp.events.add('Client:OpenTaiXiu', () => {
+   notifyHud = mp.browsers.new("package://cef/taixiu/index.html")
+});
+
 mp.events.add('showHUD', () => 
 {
     notifyHud = mp.browsers.new("package://web/vue/index.html");

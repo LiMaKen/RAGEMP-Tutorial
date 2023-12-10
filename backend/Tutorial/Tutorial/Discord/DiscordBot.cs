@@ -47,7 +47,7 @@ namespace Tutorial.Discord
 
         public async static Task BotIsReady()
         {
-            await client.SetGameAsync("mit 0 anderen auf ");
+            await client.SetGameAsync("với 0 người khác ");
 
             //await GetUserCount();
 
@@ -55,7 +55,7 @@ namespace Tutorial.Discord
 
             var guildCommand = new SlashCommandBuilder();
             guildCommand.WithName("whitelisttest");
-            guildCommand.WithDescription("Das ist unser Whitelist Test Befehl!");
+            guildCommand.WithDescription("Đây là yêu cầu của chúng tôi!");
 
             try
             {
@@ -89,7 +89,7 @@ namespace Tutorial.Discord
             var embedBuilder = new EmbedBuilder()
                 .WithAuthor(command.User)
                 .WithTitle("Whitelisttest")
-                .WithDescription("Whitelisttest Befehl erfolgreich ausgeführt!")
+                .WithDescription("Thực hiện yêu cầu thành công!")
                 .WithColor(Color.Green)
                 .WithCurrentTimestamp();
 
@@ -116,7 +116,7 @@ namespace Tutorial.Discord
 
             SocketVoiceChannel MemberCount = client.GetGuild(772867895852138496).GetVoiceChannel(1033767384701472809);
 
-            await MemberCount.ModifyAsync(prop => prop.Name = $"{count} Spieler");
+            await MemberCount.ModifyAsync(prop => prop.Name = $"{count} Người chơi");
         }
 
     }

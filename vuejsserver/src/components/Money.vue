@@ -5,7 +5,7 @@
         <li class="list-group-item"><strong>{{stats.name}}</strong></li>
         <li class="list-group-item">Level {{stats.level}}</li>
         <li class="list-group-item">{{stats.money}}$</li>
-        <li class="list-group-item">Payday in {{stats.payday}} Minuten</li>
+        <li class="list-group-item">Lĩnh lương vào {{stats.payday}} phút</li>
       </ul>
     </div>
     <div id="moneyhud" v-if="moneyshow">

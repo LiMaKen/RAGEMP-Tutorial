@@ -21,12 +21,12 @@ namespace Tutorial
             {
                 string settings = File.ReadAllText(directory);
                 _Settings = NAPI.Util.FromJson<Settings>(settings);
-                NAPI.Util.ConsoleOutput("[Settings] -> Die Server Settings wurden erfolgreich geladen!");
+                NAPI.Util.ConsoleOutput("[Settings] -> Dữ liệu Server được tải thành công!");
                 return true;
             }
             else
             {
-                NAPI.Util.ConsoleOutput("[Settings] -> Die Server Settings konnten nicht geladen werden!");
+                NAPI.Util.ConsoleOutput("[Settings] -> Không thể tải Server!");
                 NAPI.Task.Run(() =>
                 {
                    Environment.Exit(0);

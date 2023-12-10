@@ -12,17 +12,17 @@ namespace Tutorial
         {
             if(Accounts.IstSpielerEingeloggt(player))
             {
-                player.SendNotification("~r~Du bist bereits eingeloggt!");
+                player.SendNotification("~r~Bạn đã đăng nhập rồi!");
                 return;
             }
             if (!Datenbank.AccountCheck(player.Name))
             {
-                player.SendNotification("~r~Ungültiger Account!");
+                player.SendNotification("~r~Tài khoản không hợp lệ!");
                 return;
             }
             if (!Datenbank.PasswortCheck(player.Name, password))
             {
-                player.SendNotification("~r~Falsches Passwort");
+                player.SendNotification("~r~Sai mật khẩu");
                 NAPI.Task.Run(() =>
                 {
                    player.Kick();
@@ -48,7 +48,7 @@ namespace Tutorial
         {
             if(Datenbank.IstAccountBereitsVorhanden(player.Name))
             {
-                player.SendNotification("~r~Dieser Account existiert bereits!");
+                player.SendNotification("~r~Tài khoản này đã tồn tại rồi!");
                 NAPI.Task.Run(() =>
                 {
                     player.Kick();

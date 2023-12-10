@@ -12810,4 +12810,51 @@ DiscordBot: 15:18:02 Gateway     Discord.Net.HttpException: The server responded
    at Discord.API.DiscordSocketApiClient.ConnectInternalAsync()
    at Discord.API.DiscordSocketApiClient.ConnectAsync()
    at Discord.WebSocket.DiscordSocketClient.OnConnectingAsync()
-   at Discord.ConnectionManager.ConnectAsync(CancellationT
+   at Discord.ConnectionManager.ConnectAsync(CancellationTInitializing Bootstrapper.dll (1.1.0.0)..
+-> SERVER STARTED AT 12/10/2023 10:28:40 PM
+Unable to load acl.xml
+Loaded 667 entries from vehicleData.json
+Loading resources..
+-> Starting Tutorial resource..
+Tutorial: loading scripts.. found 1 script(s)
+Tutorial: instantiating Tutorial.Commands..
+Tutorial: instantiating Tutorial.Connections..
+Tutorial: instantiating Tutorial.Events..
+Tutorial: instantiating Tutorial.Haus..
+Tutorial: instantiating Tutorial.HausInterior..
+Tutorial: instantiating Tutorial.Inventory.Inventory..
+Tutorial: instantiating Tutorial.Inventory.ItemModel..
+Tutorial: instantiating Tutorial.Controllers.HausController..
+Tutorial: loading server events.. found 6 server event(s)
+Tutorial: loaded 6 server events(s)
+Tutorial: loading commands.. found 31 command(s)
+Tutorial: loading commands.. found 2 command(s)
+Tutorial: loaded 33 commands(s)
+Tutorial: loading remote events.. found 2 remote event(s)
+Tutorial: loading remote events.. found 8 remote event(s)
+Tutorial: loading remote events.. found 2 remote event(s)
+Tutorial: loaded 12 remote event(s)
+[Settings] -> Dữ liệu Server được tải thành công!
+SERVER=localhost; DATABASE=ragemptutorial; UID=root; PASSWORD=
+[MYSQL] -> Verbindung erfolgreich aufgebaut!
+WARNING: "GetBlipRouteVisible" function is not implemented yet.
+WARNING: "GetBlipRouteColor" function is not implemented yet.
+[{"id":0,"ipl":"apa_v_mp_h_01_a","posx":-437.341,"posy":1124.94,"posz":325.859,"position":{"x":-437.341,"y":1124.94,"z":325.859},"preis":50,"besitzer":"Keiner","abgeschlossen":false,"status":false,"hausLabel":{"Text":"Ngôi nhà này được bán với giá 50$, sử dụng /buyhouse để mua nhà","Color":{"Red":255,"Green":255,"Blue":255,"Alpha":255},"Seethrough":false,"Range":5.0,"Handle":{"IsNull":false,"Value":0,"Type":8},"HandleCopy":{"IsNull":false,"Value":0,"Type":8},"HashCode":134217728,"Value":0,"Id":0,"Position":{"x":-437.341,"y":1124.94,"z":326.659},"Rotation":{"x":0.0,"y":0.0,"z":0.0},"Heading":0.0,"IsNull":false,"Exists":true,"IsInstanceAlive":true,"Type":8,"Transparency":255,"Dimension":4294967295,"Model":0},"hausMarker":{"MarkerType":1,"Scale":1.0,"Direction":{"x":-437.341,"y":1124.94,"z":325.859},"Color":{"Red":38,"Green":230,"Blue":0,"Alpha":255},"Handle":{"IsNull":false,"Value":0,"Type":6},"HandleCopy":{"IsNull":false,"Value":0,"Type":6},"HashCode":100663296,"Value":0,"Id":0,"Position":{"x":-437.341,"y":1124.94,"z":324.759},"Rotation":{"x":0.0,"y":0.0,"z":0.0},"Heading":0.0,"IsNull":false,"Exists":true,"IsInstanceAlive":true,"Type":6,"Transparency":255,"Dimension":4294967295,"Model":1},"hausBlip":{"Position":{"x":-437.341,"y":1124.94,"z":325.859},"Color":2,"Name":"Hausnummer: 0","Transparency":255,"ShortRange":true,"Sprite":40,"Scale":1.0,"RouteVisible":false,"RouteColor":0,"Handle":{"IsNull":false,"Value":0,"Type":4},"HandleCopy":{"IsNull":false,"Value":0,"Type":4},"HashCode":67108864,"Value":0,"Id":0,"Rotation":{"x":0.0,"y":0.0,"z":0.0},"Heading":0.0,"IsNull":false,"Exists":true,"IsInstanceAlive":true,"Type":4,"Dimension":4294967295,"Model":40}}]
+-> Resource Tutorial started!
+-> Starting SaltyChat resource..
+SaltyChat: loading scripts.. found 2 script(s)
+SaltyChat: instantiating SaltyServer.VoiceManager..
+SaltyChat: loading server events.. found 3 server event(s)
+SaltyChat: loaded 3 server events(s)
+SaltyChat: loading commands.. found 3 command(s)
+SaltyChat: loaded 3 commands(s)
+SaltyChat: loading remote events.. found 3 remote event(s)
+SaltyChat: loaded 3 remote event(s)
+-> Resource SaltyChat started!
+Started! Waiting for connections..
+[HausSpeichern]:MySql.Data.MySqlClient.MySqlException (0x80004005): Unknown column 'newid' in 'field list'
+   at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.NativeDriver.GetResult(Int32& affectedRow, Int64& insertedId)
+   at MySql.Data.MySqlClient.Driver.GetResult(Int32 statementId, Int32& affectedRows, Int64& insertedId)
+   at MySql.Data.MySqlClient.Driver.NextResult(Int32 statementId, Boolean force)
+   at MySql.Data.MySqlClient.MySqlDataReade

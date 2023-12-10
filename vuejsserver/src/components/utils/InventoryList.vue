@@ -4,7 +4,7 @@
             {{title}}
         </div>
         <slot></slot>
-        <button class="btn btn-dark mt-1 float-right" @click="sortitems">Items zusammenlegen</button>
+        <button class="btn btn-dark mt-1 float-right" @click="sortitems">Sắp xếp vật phẩm</button>
     </div>
 </template>
 

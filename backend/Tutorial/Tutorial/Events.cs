@@ -28,7 +28,7 @@ namespace Tutorial
             //Timer
             Timer paydayTimer = new Timer(OnPaydayTimer, null, 60000, 60000);
             //Sonstige Sachen
-            NAPI.TextLabel.CreateTextLabel("~w~Willkommen auf dem vnrgames.com Tutorial Server!", new Vector3(-425.50986, 1123.3857, 325.85443 + 1.0), 10.0f, 0.5f, 4, new Color(255, 255, 255));
+            NAPI.TextLabel.CreateTextLabel("~w~Chào mừng đến với vnrgames.com Tutorial Server!", new Vector3(-425.50986, 1123.3857, 325.85443 + 1.0), 10.0f, 0.5f, 4, new Color(255, 255, 255));
             NAPI.Marker.CreateMarker(2, new Vector3(-425.50986, 1123.3857, 325.85443), new Vector3(), new Vector3(), 1.0f, new Color(255, 255, 255));
             Blip Willkommen = NAPI.Blip.CreateBlip(357, new Vector3(-425.50986, 1123.3857, 325.85443), 1.0f, 54);
             NAPI.Blip.SetBlipShortRange(Willkommen, true);
@@ -37,11 +37,11 @@ namespace Tutorial
             //Marker
             testMarker = NAPI.Marker.CreateMarker(42, new Vector3(-417.766, 1133.68, 325.905), new Vector3(0.0, 0.0, 0.0), new Vector3(0.0, 0.0, 0.0), 1.0f, new Color(255, 255, 255), false, 0);
             //Police Carspawner
-            NAPI.TextLabel.CreateTextLabel("~w~Benutze Taste ~y~[F]~w~ um ein Fraktionsfahrzeug zu spawnen!", new Vector3(441.07944, -981.0528, 30.689598 + 0.5), 20.0f, 0.5f, 4, new Color(255, 255, 255));
+            NAPI.TextLabel.CreateTextLabel("~w~Sử dụng nút ~y~[F]~w~ để tạo phương tiện của tổ chức!", new Vector3(441.07944, -981.0528, 30.689598 + 0.5), 20.0f, 0.5f, 4, new Color(255, 255, 255));
             //Discord
            // Discord.DiscordBot.StartDiscordBot();
             //Adminlog
-            Utils.adminLog("Der Server wurde erfolgreich gestartet", "Server");
+            Utils.adminLog("Server được khởi chạy thành công", "Server");
             //Test
             HausController.VerarbeiteHausListAlsJson();
         }
@@ -75,7 +75,7 @@ namespace Tutorial
         public void OnPlayerConnected(Player player)
         {
             NAPI.ClientEvent.TriggerClientEvent(player, "PlayerFreeze", true);
-            player.SendChatMessage("~y~Serverdaten werden geladen ...");
+            player.SendChatMessage("~y~Dữ liệu của server đang được tải ...");
             /*if(Datenbank.IstAccountBereitsVorhanden(player.Name))
             {
                 player.SendChatMessage("~w~Dein Account wurde in unserer Datenbank gefunden, bitte logge dich mit /login ein!");
@@ -116,7 +116,7 @@ namespace Tutorial
                 }
             }
             //Normaler Chat
-            string newmessage = player.Name + "[" + Utils.GetPlayerID(player.Name) + "] sagt: !{FFFFFF}" + message;
+            string newmessage = player.Name + "[" + Utils.GetPlayerID(player.Name) + "] nói: !{FFFFFF}" + message;
             Utils.SendRadiusMessage(newmessage, 25, player);
         }
 
@@ -125,7 +125,7 @@ namespace Tutorial
         {
             if (colshape == colWillkommen)
             {
-                player.SendChatMessage("~y~Hallo und Willkommen auf dem Server!");
+                player.SendChatMessage("~y~Chào mừng đến với Server!");
             }
         }
 
@@ -135,7 +135,7 @@ namespace Tutorial
             uint vehhash = NAPI.Util.GetHashKey(vehiclename);
             if (vehhash <= 0)
             {
-                player.SendChatMessage("~r~Ungültiges Fahrzeug!");
+                player.SendChatMessage("~r~Phương tiện không hợp lệ!");
                 return;
             }
             Vehicle veh = NAPI.Vehicle.CreateVehicle(vehhash, player.Position, player.Heading, 0, 0);
@@ -156,7 +156,7 @@ namespace Tutorial
             if(veh != null && veh.Locked == true)
             {
                 veh.Locked = false;
-                player.SendChatMessage("~g~Fahrzeug erfolgreich geknackt!");
+                player.SendChatMessage("~g~Bẻ khóa phương tiện thành công!");
                 NAPI.ClientEvent.TriggerClientEvent(player, "hideLockpicking");
             }
         }
@@ -164,7 +164,7 @@ namespace Tutorial
         [RemoteEvent("failedLockpickingServer")]
         public void OnFailedLockpickingServer(Player player)
         {
-            player.SendChatMessage("~r~Fahrzeug konnte nicht geknackt werden");
+            player.SendChatMessage("~r~Phương tiện không thể bị bẻ khỏa");
             NAPI.ClientEvent.TriggerClientEvent(player, "hideLockpicking");
         }
 
@@ -254,7 +254,7 @@ namespace Tutorial
                 player.TriggerEvent("showHideMoneyHud");
                 player.TriggerEvent("charcreator-hide");
                 NAPI.ClientEvent.TriggerClientEvent(player, "PlayerFreeze", false);
-                Utils.sendNotification(player, "Charakter erfolgreich erstellt, warte auf Einreise ...", "fas fa-user");
+                Utils.sendNotification(player, "Tạo nhân vật thành công,đang chờ đi vào thành phố ...", "fas fa-user");
                 player.TriggerEvent("showHideMoneyHud");
             }
         }
@@ -272,7 +272,7 @@ namespace Tutorial
             if (!Accounts.IstSpielerEingeloggt(player)) return;
             if(testMarker != null && player.Position.DistanceTo(testMarker.Position) < 2.5f)
             {
-                Utils.sendNotification(player, "Du bist im Marker und hast F5 gedrückt!", "fas fa-user-secret");
+                Utils.sendNotification(player, "Bạn đang đứng ở vị trí đánh dấu và đã nhấn F5!", "fas fa-user-secret");
             }
         }
 
@@ -284,7 +284,7 @@ namespace Tutorial
             Vector3 npcPosition = new Vector3(-420.6354, 1120.6459, 325.85843);
             if (player.Position.DistanceTo(npcPosition) < 1.5f)
             {
-                player.SendChatMessage("~g~Du hast dir erfolgreich ein Hot-Dog erworben!");
+                player.SendChatMessage("~g~Mua Hot-Dog thành công!");
                 if (player.Health <= 75)
                 {
                     player.Health = player.Health + 25;

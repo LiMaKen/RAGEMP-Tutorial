@@ -11,7 +11,12 @@ using Tutorial.Controllers;
 namespace Tutorial
 {
     class Commands : Script
-    {
+    {        
+        [Command("taixiuon", "/taixiuon để bật tài xỉu")]
+        public void Cmd_TaiXiuOn(Player player)
+        {
+            player.TriggerEvent("Client:OpenTaiXiu");   
+        }
         [Command("veh", "/veh để tạo ra một chiếc xe")]
         public void cmd_veh(Player player, string vehname, int color1, int color2)
         {
@@ -157,7 +162,7 @@ namespace Tutorial
             });
         }
 
-        [Command("me", "/me [Tin tức]", GreedyArg = true)]
+        [Command("me", "/me [Tin nhắn]", GreedyArg = true)]
         public void CMD_me(Player player, string nachricht)
         {
             if (!Accounts.IstSpielerEingeloggt(player)) return;
@@ -167,7 +172,7 @@ namespace Tutorial
             }
         }
 
-        [Command("save", "/save [Position]", GreedyArg = true)]
+        [Command("save", "/save [Vị trí]", GreedyArg = true)]
         public void CMD_save(Player player, string position)
         {
             if (!Accounts.IstSpielerEingeloggt(player)) return;
@@ -314,7 +319,7 @@ namespace Tutorial
             }
             else
             {
-                player.SendChatMessage("~r~Du bist nicht in der Nähe von einem Haus!");
+                player.SendChatMessage("~r~Bạn không đứng ở gần một ngôi nhà!");
             }
         }
         [Command("buyhouse", "/buyhouse um ein Haus zu kaufen!")]
@@ -325,12 +330,12 @@ namespace Tutorial
             HausModel house = HausController.holeHausInReichweite(player);
             if (house == null || house.besitzer != "Keiner")
             {
-                player.SendChatMessage("~r~Du bist nicht in der Nähe von einem freien Haus!");
+                player.SendChatMessage("~r~ Bạn không đưng ở gần một ngôi nhà trống!");
                 return;
             }
             if (account.Geld < house.preis)
             {
-                player.SendChatMessage("~r~ Du hast nicht genügend Geld dabei!");
+                player.SendChatMessage("~r~ Bạn không có đủ tiền bên người!");
                 return;
             }
             account.Geld -= house.preis;
@@ -341,7 +346,7 @@ namespace Tutorial
             NAPI.Entity.DeleteEntity(house.hausBlip);
             NAPI.Entity.DeleteEntity(house.hausLabel);
 
-            house.hausLabel = NAPI.TextLabel.CreateTextLabel($"Dieses Haus gehört {house.besitzer}, benutze /enter um es zu betreten!", new Vector3(house.position.X, house.position.Y, house.position.Z + 0.8), 5.0f, 0.75f, 4, new Color(255, 255, 255));
+            house.hausLabel = NAPI.TextLabel.CreateTextLabel($"Ngôi nhà này thuộc về {house.besitzer}, sử dụng /enter để đi vào nhà!", new Vector3(house.position.X, house.position.Y, house.position.Z + 0.8), 5.0f, 0.75f, 4, new Color(255, 255, 255));
             if (house.status == false)
             {
                 house.hausMarker = NAPI.Marker.CreateMarker(1, new Vector3(house.position.X, house.position.Y, house.position.Z - 1.1), house.position, new Vector3(), 1.0f, new Color(38, 230, 0), false);
@@ -355,7 +360,7 @@ namespace Tutorial
             NAPI.Blip.SetBlipName(house.hausBlip, "Hausnummer: " + house.id);
             NAPI.Blip.SetBlipShortRange(house.hausBlip, true);
 
-            player.SendChatMessage("~g~Du hast das Haus erfolgreich erworben!");
+            player.SendChatMessage("~g~Mua nhà thành công!");
 
             Task.Factory.StartNew(() =>
             {
@@ -363,7 +368,7 @@ namespace Tutorial
             });
         }
 
-        [Command("sellhouse", "/sellhouse um ein Haus zu verkaufen!")]
+        [Command("sellhouse", "/sellhouse để bán nhà!")]
         public void CMD_sellhouse(Player player)
         {
             if (!Accounts.IstSpielerEingeloggt(player)) return;
@@ -371,12 +376,12 @@ namespace Tutorial
             HausModel house = HausController.holeHausInReichweite(player);
             if (house == null)
             {
-                player.SendChatMessage("~r~Du bist nicht in der Nähe von einem Haus!");
+                player.SendChatMessage("~r~Bạn không ở gần một ngôi nhà!");
                 return;
             }
             if (house.besitzer != player.Name)
             {
-                player.SendChatMessage("~r~Dieses Haus gehört dir nicht!");
+                player.SendChatMessage("~r~Ngôi nhà này không thuộc về bạn!");
                 return;
             }
             account.Geld += house.preis / 2;
@@ -388,7 +393,7 @@ namespace Tutorial
             NAPI.Entity.DeleteEntity(house.hausBlip);
             NAPI.Entity.DeleteEntity(house.hausLabel);
 
-            house.hausLabel = NAPI.TextLabel.CreateTextLabel($"Dieses Haus steht für {house.preis}$ zum Verkauf, benutze /buyhouse um es zu kaufen!", new Vector3(house.position.X, house.position.Y, house.position.Z + 0.8), 5.0f, 0.75f, 4, new Color(255, 255, 255));
+            house.hausLabel = NAPI.TextLabel.CreateTextLabel($"Ngôi nhà này có giá {house.preis}$, sử dụng /buyhouse để mua nhà!", new Vector3(house.position.X, house.position.Y, house.position.Z + 0.8), 5.0f, 0.75f, 4, new Color(255, 255, 255));
             if (house.status == false)
             {
                 house.hausMarker = NAPI.Marker.CreateMarker(1, new Vector3(house.position.X, house.position.Y, house.position.Z - 1.1), house.position, new Vector3(), 1.0f, new Color(38, 230, 0), false);
@@ -402,7 +407,7 @@ namespace Tutorial
             NAPI.Blip.SetBlipName(house.hausBlip, "Hausnummer: " + house.id);
             NAPI.Blip.SetBlipShortRange(house.hausBlip, true);
 
-            player.SendChatMessage("~g~Du hast das Haus erfolgreich verkauft!");
+            player.SendChatMessage("~g~Bạn đã bán nhà thành công!");
 
             Task.Factory.StartNew(() =>
             {
@@ -410,7 +415,7 @@ namespace Tutorial
             });
         }
 
-        [Command("lockpicking", "/lockpicking um ein Fahrzeug aufzuknacken!")]
+        [Command("lockpicking", "/lockpicking để mở phương tiện!")]
         public void CMD_lockpicking(Player player)
         {
             Vehicle vehicle = Utils.GetClosestVehicle(player);
@@ -422,84 +427,84 @@ namespace Tutorial
                 }
                 else
                 {
-                    player.SendChatMessage("~r~Das Fahrzeug ist bereits offen!");
+                    player.SendChatMessage("~r~Phương tiện đã mở rồi!");
                 }
             }
             else
             {
-                player.SendChatMessage("~r~Du bist nicht in der Nähe von einem Fahrzeug!");
+                player.SendChatMessage("~r~Bạn không ở gần một phương tiện!");
             }
         }
 
         //Nicht in der Tutorialreihe erstellt
-        [Command("setskin", "/setskin um dir ein Skin zu setzen!")]
+        [Command("setskin", "/setskin tạo skin!")]
         public void CMD_setskin(Player player, string model)
         {
             Accounts account = player.GetData<Accounts>(Accounts.Account_Key);
             if (!account.IstSpielerAdmin((int)Accounts.AdminRanks.Administrator))
             {
-                player.SendChatMessage("~r~Dein Adminlevel ist zu gering!");
+                player.SendChatMessage("~r~Quyền quản trị viên không đủ!");
                 return;
             }
             uint skinhash = NAPI.Util.GetHashKey(model);
             NAPI.Player.SetPlayerSkin(player, skinhash);
-            player.SendChatMessage("~g~Skin erfolgreich gesetzt!");
+            player.SendChatMessage("~g~Đặt skin thành công!");
         }
 
-        [Command("loadipl", "/loadipl um eine IPL zu laden!")]
+        [Command("loadipl", "/loadipl để load một IPL!")]
         public void CMD_loadipl(Player player, string ipl)
         {
             Accounts account = player.GetData<Accounts>(Accounts.Account_Key);
             if (!account.IstSpielerAdmin((int)Accounts.AdminRanks.Administrator))
             {
-                player.SendChatMessage("~r~Dein Adminlevel ist zu gering!");
+                player.SendChatMessage("~r~Quyền quản trị viên không đủ!");
                 return;
             }
-            player.SendChatMessage("~g~IPL Erfolgreich geladen!");
+            player.SendChatMessage("~g~Load IPL thành công!");
         }
 
-        [Command("fraktionsinfo", "/fraktionsinfo für eine Fraktionsübersicht")]
+        [Command("fraktionsinfo", "/fraktionsinfo để mô tả một tổ chức")]
         public void CMD_fraktionsinfo(Player player)
         {
             Accounts account = player.GetData<Accounts>(Accounts.Account_Key);
-            player.SendChatMessage($"Du bist in der Fraktion {account.HoleFraktionsName()} und hast den Rang {account.HoleRangName()}!");
+            player.SendChatMessage($"Bạn ở trong tổ chức {account.HoleFraktionsName()} và có chức vụ là {account.HoleRangName()}!");
         }
 
-        [Command("makeleader", "/makeleader um einen zum Leader zu machen!")]
+        [Command("makeleader", "/makeleader biến một người thành người đứng đầu tổ chức!")]
         public void CMD_makeleader(Player player, String playertarget, int frak)
         {
             Accounts account = player.GetData<Accounts>(Accounts.Account_Key);
             if (!account.IstSpielerAdmin((int)Accounts.AdminRanks.Administrator))
             {
-                player.SendChatMessage("~r~Dein Adminlevel ist zu gering!");
+                player.SendChatMessage("~r~Quyền quản trị không đủ!");
                 return;
             }
             Player target = Utils.GetPlayerByNameOrID(playertarget);
             Accounts accounttarget = target.GetData<Accounts>(Accounts.Account_Key);
             if (accounttarget != null && frak < 0 || frak > Accounts.FraktionsDaten.Length)
             {
-                player.SendChatMessage("~r~Ungültige Fraktion!");
+                player.SendChatMessage("~r~Tổ chức không hợp lệ!");
                 return;
             }
             accounttarget.Fraktion = frak;
             accounttarget.Rang = 10;
-            player.SendChatMessage($"Du hast {target.Name} zum Chef der Fraktion {Accounts.FraktionsDaten[frak, 0]} gemacht!");
-            target.SendChatMessage($"Du wurdest von {player.Name} zum Chef der Fraktion {Accounts.FraktionsDaten[frak, 0]} gemacht!");
+            player.SendChatMessage($"Bạn đã để {target.Name} làm người đứng đầu {Accounts.FraktionsDaten[frak, 0]} !");
+            target.SendChatMessage($"Bạn được {player.Name} để làm người đứng đầu {Accounts.FraktionsDaten[frak, 0]} !");
         }
 
-        [Command("whitelist", "/whitelist um einen Spieler auf die Whitelist zu setzen")]
+        [Command("whitelist", "/whitelist đưa người chơi vào whitelist")]
         public void CMD_whitelist(Player player, ulong socialclubid)
         {
             bool found = false;
             Accounts account = player.GetData<Accounts>(Accounts.Account_Key);
             if (!account.IstSpielerAdmin((int)Accounts.AdminRanks.Administrator))
             {
-                player.SendChatMessage("~r~Dein Adminlevel ist zu gering!");
+                player.SendChatMessage("~r~Quyền quản trị viên không đủ!");
                 return;
             }
             if (socialclubid < 10000)
             {
-                player.SendChatMessage("~r~Ungültige Socialclubid!");
+                player.SendChatMessage("~r~Socialclubid không hợp lệ!");
                 return;
             }
             MySqlCommand command = Datenbank.Connection.CreateCommand();
@@ -526,46 +531,46 @@ namespace Tutorial
                 command3.CommandText = "INSERT INTO whitelist (socialclubid) VALUES (@socialclubid)";
                 command3.Parameters.AddWithValue("socialclubid", socialclubid);
                 command3.ExecuteNonQuery();
-                player.SendChatMessage("~g~Whitelisteintrag erfolgreich hinzugefügt!");
+                player.SendChatMessage("~g~Thêm vào whitelist thành công!");
             }
         }
 
-        [Command("invite", "/invite um einen zu deiner Fraktion einzuladen!")]
+        [Command("invite", "/invite để mời người chơi vào tổ chức của bạn!")]
         public void CMD_invite(Player player, String playertarget)
         {
             Accounts account = player.GetData<Accounts>(Accounts.Account_Key);
             if (account.Fraktion == 0)
             {
-                player.SendChatMessage("~r~Du bist in keiner Fraktion!");
+                player.SendChatMessage("~r~Bạn không có trong tổ chức nào!");
                 return;
             }
             if (account.Rang < 10)
             {
-                player.SendChatMessage($"~r~Du bist kein {Accounts.FraktionsDaten[account.Fraktion, 10]}");
+                player.SendChatMessage($"~r~Bạn không phải là {Accounts.FraktionsDaten[account.Fraktion, 10]}");
                 return;
             }
             Player target = Utils.GetPlayerByNameOrID(playertarget);
             Accounts accounttarget = target.GetData<Accounts>(Accounts.Account_Key);
             accounttarget.Fraktion = account.Fraktion;
             accounttarget.Rang = 1;
-            player.SendChatMessage($"Du hast {target.Name} in die Fraktion {Accounts.FraktionsDaten[account.Fraktion, 0]} eingeladen!");
-            target.SendChatMessage($"Du wurdest von {player.Name} in die Fraktion {Accounts.FraktionsDaten[account.Fraktion, 0]} eingeladen!");
+            player.SendChatMessage($"Bạn đã mời {target.Name} vào tổ chức {Accounts.FraktionsDaten[account.Fraktion, 0]} !");
+            target.SendChatMessage($"Bạn đã được {player.Name} mời vào tổ chức {Accounts.FraktionsDaten[account.Fraktion, 0]} !");
         }
 
-        [Command("pistole", "/pistole um dir eine Pistole zu geben")]
+        [Command("pistole", "/pistole tạo một khẩu súng lục")]
         public void CMD_pistole(Player player)
         {
             Accounts account = player.GetData<Accounts>(Accounts.Account_Key);
             if (account.Fraktion != 1)
             {
-                player.SendChatMessage($"~r~Du bist kein Mitglied des {Accounts.FraktionsDaten[1, 0]}!");
+                player.SendChatMessage($"~r~Bạn không phải là thành viên của {Accounts.FraktionsDaten[1, 0]}!");
                 return;
             }
             NAPI.Player.GivePlayerWeapon(player, NAPI.Util.WeaponNameToModel("pistol"), 500);
-            player.SendChatMessage("Du hast dir eine Pistole gegeben!");
+            player.SendChatMessage("Tạo súng lục thành công!");
         }
 
-        [Command("carlock", "/carlock um ein Fahrzeug auf/ab zu schließen!")]
+        [Command("carlock", "/carlock để mở/khóa một phương tiện!")]
         public void CMD_carlock(Player player)
         {
             Vehicle getVehicle = Utils.GetClosestVehicle(player);
@@ -577,12 +582,12 @@ namespace Tutorial
                     if (getVehicle.Locked == true)
                     {
                         getVehicle.Locked = false;
-                        Utils.sendNotification(player, "Aufgeschlossen", "fas fa-car");
+                        Utils.sendNotification(player, "phương tiện đã mở", "fas fa-car");
                     }
                     else
                     {
                         getVehicle.Locked = true;
-                        Utils.sendNotification(player, "Abgeschlossen", "fas fa-car");
+                        Utils.sendNotification(player, "phương tiện đã khóa", "fas fa-car");
                     }
                 }
             }
@@ -600,18 +605,18 @@ namespace Tutorial
         {
             if (crosshair < 0 || crosshair > 18)
             {
-                Utils.sendNotification(player, "Ungültiges Crosshair", "fas fa-user");
+                Utils.sendNotification(player, "Tâm không hợp lệ", "fas fa-user");
                 return;
             }
             player.TriggerEvent("showcrosshair", crosshair);
-            Utils.sendNotification(player, "Crosshair gesetzt!", "fas fa-user");
+            Utils.sendNotification(player, "Đặt tâm ngắm thành công!", "fas fa-user");
         }
 
         [Command("crosshairhide")]
         public void CMD_crosshairhide(Player player)
         {
             player.TriggerEvent("hidecrosshair");
-            Utils.sendNotification(player, "Crosshair deaktiviert!", "fas fa-user");
+            Utils.sendNotification(player, "vô hiệu hóa tâm ngắm!", "fas fa-user");
         }
 
         [Command("geld")]

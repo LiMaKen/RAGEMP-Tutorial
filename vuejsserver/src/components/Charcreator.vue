@@ -5,84 +5,84 @@
         <div id="sidebar" ref="sidebar" class="active animate__animated animate__backInUp"
           style="overflow-x:hidden;overflow-y:hidden;">
           <div class="p-4">
-            <h1><a class="logo">Charakter Erstellung</a></h1>
+            <h1><a class="logo">Thiết Lập Nhân Vật</a></h1>
             <ul id="navigation" class="list-unstyled components mb-5">
               <li :class="[(naviSwitch == 'Identität') ? 'active':'']">
                 <a @click="setDefaultCamera()" style="cursor:pointer"><span
-                    class="fa fa-home mr-3"></span>Identität</a>
+                    class="fa fa-home mr-3"></span>Định Danh</a>
               </li>
               <li :class="[(naviSwitch == 'Genetik') ? 'active':'']">
-                <a @click="naviSwitch='Genetik'" style="cursor:pointer"><span class="fa fa-user mr-3"></span>Genetik</a>
+                <a @click="naviSwitch='Genetik'" style="cursor:pointer"><span class="fa fa-user mr-3"></span>Đặc điểm di chuyền</a>
               </li>
               <li :class="[(naviSwitch == 'Haare') ? 'active':'']">
                 <a @click="naviSwitch='Haare'" style="cursor:pointer"><span
-                    class="fa fa-user-edit mr-3"></span>Haare/Bart</a>
+                    class="fa fa-user-edit mr-3"></span>Tóc/Râu</a>
               </li>
               <li :class="[(naviSwitch == 'Gesichtsform') ? 'active':'']">
                 <a @click="naviSwitch='Gesichtsform'" style="cursor:pointer"><span
-                    class="fa fa-meh-blank mr-3"></span>Gesicht</a>
+                    class="fa fa-meh-blank mr-3"></span>Mặt</a>
               </li>
               <li :class="[(naviSwitch == 'Details') ? 'active':'']">
                 <a @click="naviSwitch='Details'" style="cursor:pointer"><span
-                    class="fa fa-info-circle mr-3"></span>Details</a>
+                    class="fa fa-info-circle mr-3"></span>Chi tiết</a>
               </li>
               <li :class="[(naviSwitch == 'Kleidung') ? 'active':'']">
                 <a @click="naviSwitch='Kleidung'" style="cursor:pointer"><span
-                    class="fa fa-tshirt mr-3"></span>Kleidung</a>
+                    class="fa fa-tshirt mr-3"></span>Quần Áo</a>
               </li>
               <li :class="[(naviSwitch == 'Fertig') ? 'active':'']">
                 <a @click="naviSwitch='Fertig'" style="cursor:pointer"><span
-                    class="fa fa-flag-checkered mr-3"></span>Fertig</a>
+                    class="fa fa-flag-checkered mr-3"></span>Hoàn Thành</a>
               </li>
             </ul>
             <div class="footer">
-              Bitte beachte das du dein Aussehen sowie deinen Namen nicht mehr ändern kannst!
-              <br /><br />Die Charaktererstellung wurde von <b>vnrgames.com</b> entwickelt!
+              Xin lưu ý rằng tên cũng như là vẻ ngoài của bạn không thể thay đổi được thêm nữa!
+              <br /><br />Tạo nhân vật <b>được phát triển bởi</b> vnrgames.com!
             </div>
           </div>
         </div>
         <div v-if="naviSwitch == 'Identität'" id="sidebar" class="p-4"
           style="margin-right: 0;margin-left:auto;background-color: #0084ff">
-          <h1><a class="logo" style="color:white">Identität</a></h1>
+          <h1><a class="logo" style="color:white">Định danh</a></h1>
           <ul class="list-unstyled components mb-5">
             <li class="active">
-              <span class="fa fa-venus-mars mr-2"></span>Geschlecht
+              <span class="fa fa-venus-mars mr-2"></span>Giới tính
               <br />
               <div v-if="character.gender == 'Männlich'">
                 <button type="button" class="btn btn-primary" style="background-color: #104e6b; border: 0"
-                  v-on:click="setGender('Männlich')">Männlich</button>
+                  v-on:click="setGender('Männlich')">Nam</button>
                 <button type="button" class="btn btn-secondary ml-2"
-                  v-on:click="setGender('Weiblich')">Weiblich</button>
+                  v-on:click="setGender('Weiblich')">Nữ</button>
               </div>
               <div v-if="character.gender == 'Weiblich'">
                 <button type="button" class="btn btn-secondary"
-                  v-on:click="setGender('Männlich')">Männlich</button>
+                  v-on:click="setGender('Männlich')">Nam</button>
                 <button type="button" class="btn btn-primary ml-2" style="background-color: #104e6b; border: 0"
-                  v-on:click="setGender('Weiblich')">Weiblich</button>
+                  v-on:click="setGender('Weiblich')">Nữ</button>
               </div>
             </li>
             <li class="active">
-              <span class="fa fa-calendar mt-3 mr-2"></span>Geburtsdatum
+              <span class="fa fa-calendar mt-3 mr-2"></span>Sinh nhật
               <input v-model="character.birth" type="text" class="form-control" id="exampleInputEmail1" maxlength="10">
             </li>
             <hr />
             <li class="active">
-              <span class="fa fa-user mt-3 mr-2"></span>Vorname
+              <span class="fa fa-user mt-3 mr-2"></span>Họ
               <input v-model="character.firstname" type="text" class="form-control" id="exampleInputEmail1"
                 maxlength="16">
             </li>
             <li class="active">
-              <span class="fa fa-user mt-3 mr-2"></span>Nachname
+              <span class="fa fa-user mt-3 mr-2"></span>Tên
               <input v-model="character.lastname" type="text" class="form-control" id="exampleInputEmail1"
                 maxlength="16">
             </li>
             <li class="active">
-              <span class="fa fa-align-center mt-3 mr-2"></span>Größe
+              <span class="fa fa-align-center mt-3 mr-2"></span>Chiều cao
               <input v-model="character.size" type="text" class="form-control" id="exampleInputEmail1" maxlength="9"
                 placeholder="1m - 70cm">
             </li>
             <li class="active">
-              <span class="fa fa-flag mt-3 mr-2"></span>Herkunft
+              <span class="fa fa-flag mt-3 mr-2"></span>Quê quán
               <input v-model="character.origin" type="text" class="form-control" id="exampleInputEmail1" maxlength="30"
                 placeholder="Los-Santos">
             </li>
@@ -90,7 +90,7 @@
         </div>
         <div v-if="naviSwitch == 'Genetik'" id="sidebar" class="p-4"
           style="margin-right: 0;margin-left:auto;background-color: #0084ff">
-          <h1><a class="logo" style="color:white">Genetik</a></h1>
+          <h1><a class="logo" style="color:white">Đặc điểm di chuyền</a></h1>
           <ul class="list-unstyled components mb-5">
             <li class="active mt-2" v-for="(blend, index) in blendData" :key="index">
               <span class="contenttext">{{blend[0]}}</span>
@@ -99,7 +99,7 @@
                 v-oninput="customize('blendData', index, character.blendData[index])"><small class="ml-2">{{character.blendData[index]}}</small>
             </li>
               <div class="mt-2">
-                <span class="contenttext">Augenfarbe [{{character.eyeColor[0]}}]</span>
+                <span class="contenttext">Màu mắt [{{character.eyeColor[0]}}]</span>
                 <input class="ml-2 slider" type="range" :min="0" :max="31" value='0' :step="1"
                   v-model="character.eyeColor[0]"
                   v-oninput="customize('eyeColor', 0, character.eyeColor[0])"><small class="ml-2">{{character.eyeColor[0]}}</small>
@@ -108,7 +108,7 @@
         </div>
         <div v-if="naviSwitch == 'Gesichtsform'" id="sidebar" class="p-4"
           style="margin-right: 0;margin-left:auto;background-color: #0084ff">
-          <h1><a class="logo" style="color:white">Gesicht</a></h1>
+          <h1><a class="logo" style="color:white">Khuôn mặt</a></h1>
           <ul class="list-unstyled components mb-5">
             <li class="active mt-2" v-for="(faceFeature, index) in faceFeatures" :key="index">
               <span class="contenttext">{{faceFeatures[index]}}</span>
@@ -121,7 +121,7 @@
         </div>
         <div v-if="naviSwitch == 'Details'" id="sidebar" class="p-4"
           style="margin-right: 0;margin-left:auto;background-color: #0084ff">
-          <h1><a class="logo" style="color:white">Details</a></h1>
+          <h1><a class="logo" style="color:white">Chi tiết</a></h1>
           <ul class="list-unstyled components mb-5">
             <li class="active mt-2" v-for="(headOverlay, index) in headOverlays" :key="index">
               <span class="contenttext">{{headOverlays[index]}}</span><span class="ml-2 fa fa-window-close icons"
@@ -140,7 +140,7 @@
         </div>
         <div v-if="naviSwitch == 'Kleidung'" id="sidebar" class="p-4"
           style="margin-right: 0;margin-left:auto;background-color: #0084ff">
-          <h1><a class="logo" style="color:white">Kleidung</a></h1>
+          <h1><a class="logo" style="color:white">Quần áo</a></h1>
           <ul class="list-unstyled components mb-5">
             <li class="active mt-2" v-for="(clothes, index) in clothings" :key="index">
               <span class="contenttext">{{clothings[index]}}</span>
@@ -151,42 +151,40 @@
             </li>
           </ul>
           <button type="button" class="btn btn-danger mt-3"
-            v-on:click="resetCloths()">Kleidung reseten</button>
+            v-on:click="resetCloths()">Đặt lại quần áo</button>
         </div>
         <div v-if="!naviSwitch" id="sidebar" class="p-4 animate__animated animate__backInUp"
           style="margin-right: 0;margin-left:auto;background-color: #0084ff">
-          <h1><a class="logo" style="color:white">Hallo</a></h1>
-          <p class="mt-2">Willkommen auf dem <strong>vnrgames.com Tutorial (Powered by vnrgames.com)</strong>
+          <h1><a class="logo" style="color:white">Xin chào</a></h1>
+          <p class="mt-2">Chào mừng đến với <strong>vnrgames.com Tutorial (Powered by vnrgames.com)</strong>
             Roleplayserver.
-            Du kannst dir jetzt einen Charakter erstellen, wähle dazu Rechts eine Kategorie aus.</p>
-          <p>Viel Spass bei der Charaktererstellung!</p>
+            Bây giờ bạn có thể tạo nhân vật bằng cách chọn danh mục ở bên phải.</p>
+          <p>Chúc bạn tạo nhân vật vui vẻ!</p>
         </div>
         <div v-if="naviSwitch == 'Fertig'" id="sidebar" class="p-4"
           style="margin-right: 0;margin-left:auto;background-color: #0084ff">
-          <h1><a class="logo" style="color:white">Fertig</a></h1>
-          <p class="mt-2">Bitte beachte, wir sind ein <strong>Roleplay-Server</strong> demzufolge schlüpfst du
+          <h1><a class="logo" style="color:white">Hoàn thành</a></h1>
+          <p class="mt-2">Xin chú ý rằng, chúng tôi là một <strong>Roleplay-Server</strong> demzufolge schlüpfst du
             in die
             Rolle eines Charakteres und spielst diesen aus. Für einen reibungslosen Spielverlauf gibt es
             Regeln, diese
-            findest du unter <strong>https://vnrgames.com</strong>, bitte lese dir diese aufmerksam
-            durch!</p>
-          <p>Nach dem Klicken von 'Charakter erstellen' wird dein Charakter erstellt, dann beginnt dein IC
-            Leben!</p>
-          <button type="button" class="btn btn-success mt-5 ml-4 animate__animated animate__heartBeat" v-on:click="createCharacter()">Charakter
-            erstellen</button>
+            findest du unter <strong>https://vnrgames.com</strong>, xin hãy đọc kỹ những qui định!</p>          
+          <p> Sau khi tạo nhân vật,bạn sẽ bắt đầu cuộc sống ở trong game.</p>
+          <button type="button" class="btn btn-success mt-5 ml-4 animate__animated animate__heartBeat" v-on:click="createCharacter()">Tạo
+            nhân vật</button>
         </div>
         <div v-if="naviSwitch == 'Haare'" id="sidebar" class="p-4"
           style="margin-right: 0;margin-left:auto;background-color: #0084ff">
-          <h1><a class="logo" style="color:white">Haare/Bart</a></h1>
+          <h1><a class="logo" style="color:white">Tóc/Râu</a></h1>
           <ul class="list-unstyled components mb-5">
             <li>
-              <span class="contenttext">Haarstil</span>
+              <span class="contenttext">Kiểu tóc</span>
               <input class="ml-3 slider" type="range" min="0" max="75" value="1" v-model="character.hair[0]"
                 v-oninput="customize('hair', 0, character.hair[0])"><small class="ml-2">{{character.hair[0]}}</small>
               <hr />
             </li>
             <li>
-              <span class="contenttext">Haarfarbe</span>
+              <span class="contenttext">Màu tóc</span>
               <div class="hair">
                 <ul class="hairColors-1">
                   <li v-for="(hairColor, index) in hairColors" :key="hairColor" :style="{ background: hairColor }"
@@ -197,7 +195,7 @@
               <hr />
             </li>
             <li>
-              <span class="contenttext">Haartönung</span>
+              <span class="contenttext">Tone tóc</span>
               <div class="hair">
                 <ul class="hairColors-2">
                   <li v-for="(hairColor, index) in hairColors" :key="hairColor" :style="{ background: hairColor }"
@@ -208,13 +206,13 @@
               <hr />
             </li>
             <li>
-              <span class="contenttext">Bartstil</span>
+              <span class="contenttext">Kiểu râu</span>
               <input class="ml-3 slider" type="range" min="1" max="28" value="1" v-model="character.beard[0]"
                 v-oninput="customize('beard', 0, character.beard[0])"><small class="ml-2">{{character.beard[0]}}</small>
               <hr />
             </li>
             <li>
-              <span class="contenttext">Bartfarbe</span>
+              <span class="contenttext">Màu râu</span>
               <div class="beard">
                 <ul class="beardColors">
                   <li v-for="beardColor in beardColors" :key="beardColor"
