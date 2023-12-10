@@ -1,0 +1,10 @@
+.vs
+dotnet/server_exceptions.txt
+client_packages/.listcache
+backend/Tutorial/Tutorial/obj
+backend/Tutorial/.vs
+dotnet/resources/Tutorial/Tutorial.dll
+dotnet/resources/Tutorial/Tutorial.pdb
+dotnet/resources/Tutorial/Tutorial.deps.json
+backend/Tutorial/Tutorial/Properties/launchSettings.json
+
