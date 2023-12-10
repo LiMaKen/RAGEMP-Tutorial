@@ -47,7 +47,7 @@ namespace Tutorial.Discord
 
         public async static Task BotIsReady()
         {
-            await client.SetGameAsync("mit 0 anderen auf Nemesus.de");
+            await client.SetGameAsync("mit 0 anderen auf ");
 
             //await GetUserCount();
 

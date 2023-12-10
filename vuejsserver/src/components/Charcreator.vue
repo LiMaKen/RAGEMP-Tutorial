@@ -37,7 +37,7 @@
             </ul>
             <div class="footer">
               Bitte beachte das du dein Aussehen sowie deinen Namen nicht mehr ändern kannst!
-              <br /><br />Die Charaktererstellung wurde von <b>Nemesus.de</b> entwickelt!
+              <br /><br />Die Charaktererstellung wurde von <b>vnrgames.com</b> entwickelt!
             </div>
           </div>
         </div>
@@ -156,7 +156,7 @@
         <div v-if="!naviSwitch" id="sidebar" class="p-4 animate__animated animate__backInUp"
           style="margin-right: 0;margin-left:auto;background-color: #0084ff">
           <h1><a class="logo" style="color:white">Hallo</a></h1>
-          <p class="mt-2">Willkommen auf dem <strong>NemesusTV Tutorial (Powered by Nemesus.de)</strong>
+          <p class="mt-2">Willkommen auf dem <strong>vnrgames.com Tutorial (Powered by vnrgames.com)</strong>
             Roleplayserver.
             Du kannst dir jetzt einen Charakter erstellen, wähle dazu Rechts eine Kategorie aus.</p>
           <p>Viel Spass bei der Charaktererstellung!</p>
@@ -168,7 +168,7 @@
             in die
             Rolle eines Charakteres und spielst diesen aus. Für einen reibungslosen Spielverlauf gibt es
             Regeln, diese
-            findest du unter <strong>https://regeln.nemesus.de</strong>, bitte lese dir diese aufmerksam
+            findest du unter <strong>https://vnrgames.com</strong>, bitte lese dir diese aufmerksam
             durch!</p>
           <p>Nach dem Klicken von 'Charakter erstellen' wird dein Charakter erstellt, dann beginnt dein IC
             Leben!</p>

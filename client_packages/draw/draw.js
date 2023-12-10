@@ -3,7 +3,7 @@ let street = undefined;
 let zone = undefined;
 
 mp.events.add('render', () => {
-    mp.game.graphics.drawText('~b~Nemesus.de', [0.5, 0.005], {
+    mp.game.graphics.drawText('~b~Vnrgames.Com', [0.5, 0.005], {
         font: 0,
         color: [255, 255, 255, 255],
         scale: [0.5, 0.5],
